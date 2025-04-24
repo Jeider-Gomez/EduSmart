@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Mail, Facebook, Twitter, Linkedin, Phone } from 'lucide-react'; // Added Phone
+import Image from 'next/image'; // Import next/image
 
 export default function Footer() {
   return (
@@ -8,14 +9,18 @@ export default function Footer() {
         {/* Institutional Logos & Credits */}
         <div className="flex flex-col items-center md:items-start">
            <div className="flex items-center gap-2 mb-2">
-             {/* Placeholder for Institutional Logo 1 */}
-             <div className="h-8 w-8 bg-muted rounded-full flex items-center justify-center text-muted-foreground text-xs">L1</div>
-             {/* Placeholder for Institutional Logo 2 */}
-             <div className="h-8 w-8 bg-muted rounded-full flex items-center justify-center text-muted-foreground text-xs">L2</div>
-             <span className="font-poppins text-sm font-semibold text-primary">Institución XYZ</span>
+             {/* University of Córdoba Logo */}
+              <Image
+                src="https://cintia.unicordoba.edu.co/wp-content/uploads/2023/02/unicordoba_logo.png"
+                alt="Logo Universidad de Córdoba"
+                width={120} // Adjust width for footer
+                height={32} // Adjust height for footer
+                className="h-8 w-auto"
+              />
+             {/* <span className="font-poppins text-sm font-semibold text-primary">Universidad de Córdoba</span> */}
            </div>
            <p className="font-open-sans text-xs text-muted-foreground">
-             © {new Date().getFullYear()} EduSmart Hub. Proyecto desarrollado por [Nombre del Equipo/Desarrollador].
+             © {new Date().getFullYear()} EduSmart Hub. Una iniciativa de la Universidad de Córdoba.
            </p>
         </div>
 
@@ -55,6 +60,7 @@ export default function Footer() {
             <Phone className="h-4 w-4" />
              (+57) 305 276 0851
           </a>
+          {/* Replace # with actual institutional social media links */}
           <div className="flex gap-4">
             <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
               <Facebook className="h-5 w-5" />

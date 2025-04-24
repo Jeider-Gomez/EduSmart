@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Home, Compass, Library, BarChart3, HelpCircle, X } from 'lucide-react'; // Updated icons
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image'; // Import next/image
 
 // Updated nav items based on new prompt structure
 const navItems = [
@@ -26,23 +27,19 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo/Brand */}
         <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-           {/* Simple EduSmart Logo */}
-           <svg width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="text-primary">
-               <defs>
-                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: 'hsl(var(--primary))', stopOpacity: 1 }} />
-                    <stop offset="100%" style={{ stopColor: 'hsl(var(--secondary))', stopOpacity: 1 }} />
-                    </linearGradient>
-                </defs>
-               <circle cx="50" cy="50" r="45" fill="url(#grad1)" />
-               <path d="M30 65 Q 50 85 70 65" fill="none" stroke="white" strokeWidth="8" strokeLinecap="round"/>
-               <path d="M35 48 Q 50 60 65 48" fill="none" stroke="white" strokeWidth="7" strokeLinecap="round"/>
-               <path d="M42 32 Q 50 40 58 32" fill="none" stroke="white" strokeWidth="6" strokeLinecap="round"/>
-            </svg>
-          <span className="font-poppins text-xl font-bold text-primary hidden sm:inline">
+           {/* University of Córdoba Logo */}
+           <Image
+             src="https://cintia.unicordoba.edu.co/wp-content/uploads/2023/02/unicordoba_logo.png"
+             alt="Logo Universidad de Córdoba"
+             width={150} // Adjust width as needed
+             height={40} // Adjust height as needed
+             className="h-10 w-auto" // Maintain aspect ratio
+             priority
+           />
+          <span className="font-poppins text-xl font-bold text-primary hidden sm:inline ml-2">
             EduSmart Hub
           </span>
-           <span className="font-poppins text-lg font-bold text-primary sm:hidden">
+           <span className="font-poppins text-lg font-bold text-primary sm:hidden ml-1">
             EduSmart
           </span>
         </Link>
@@ -80,20 +77,15 @@ export default function Header() {
                     {/* Mobile Menu Header */}
                     <div className="flex items-center justify-between p-4 border-b">
                          <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                            {/* Simple EduSmart Logo */}
-                            <svg width="24" height="24" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="text-primary">
-                                <defs>
-                                    <linearGradient id="grad1mob" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style={{ stopColor: 'hsl(var(--primary))', stopOpacity: 1 }} />
-                                    <stop offset="100%" style={{ stopColor: 'hsl(var(--secondary))', stopOpacity: 1 }} />
-                                    </linearGradient>
-                                </defs>
-                            <circle cx="50" cy="50" r="45" fill="url(#grad1mob)" />
-                            <path d="M30 65 Q 50 85 70 65" fill="none" stroke="white" strokeWidth="8" strokeLinecap="round"/>
-                            <path d="M35 48 Q 50 60 65 48" fill="none" stroke="white" strokeWidth="7" strokeLinecap="round"/>
-                            <path d="M42 32 Q 50 40 58 32" fill="none" stroke="white" strokeWidth="6" strokeLinecap="round"/>
-                            </svg>
-                           <span className="font-poppins text-lg font-semibold text-primary">EduSmart Hub</span>
+                             {/* University of Córdoba Logo (Mobile) */}
+                            <Image
+                                src="https://cintia.unicordoba.edu.co/wp-content/uploads/2023/02/unicordoba_logo.png"
+                                alt="Logo Universidad de Córdoba"
+                                width={100} // Smaller width for mobile menu
+                                height={26} // Adjust height accordingly
+                                className="h-7 w-auto"
+                            />
+                           {/* <span className="font-poppins text-lg font-semibold text-primary">EduSmart Hub</span> */}
                          </Link>
                         <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)} className="h-8 w-8">
                            <X className="h-5 w-5 text-muted-foreground" />
