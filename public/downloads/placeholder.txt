@@ -1,0 +1,2 @@
+This directory is for downloadable resources like PDFs, templates, etc.
+Delete this file once you add actual resources.
