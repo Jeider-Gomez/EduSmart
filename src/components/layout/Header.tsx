@@ -4,16 +4,15 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Home, Compass, Library, BarChart3, HelpCircle, X } from 'lucide-react'; // Updated icons
+import { Menu, Home, Compass, Library, BarChart3, HelpCircle, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
-import Image from 'next/image'; // Import next/image
+import Image from 'next/image';
 
-// Updated nav items based on new prompt structure
 const navItems = [
   { href: '/', label: 'Inicio', icon: <Home className="h-5 w-5" /> },
-  { href: '/modules', label: 'Explorar módulos', icon: <Compass className="h-5 w-5" /> }, // Changed label
-  { href: '/resources', label: 'Recursos', icon: <Library className="h-5 w-5" /> }, // Changed Icon
+  { href: '/modules', label: 'Explorar módulos', icon: <Compass className="h-5 w-5" /> },
+  { href: '/resources', label: 'Recursos', icon: <Library className="h-5 w-5" /> },
   { href: '/progress', label: 'Mi progreso', icon: <BarChart3 className="h-5 w-5" /> },
   { href: '/help', label: 'Ayuda / Contacto', icon: <HelpCircle className="h-5 w-5" /> },
 ];
@@ -27,20 +26,19 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo/Brand */}
         <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-           {/* University of Córdoba Logo */}
            <Image
              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Unicor.svg/1200px-Unicor.svg.png"
              alt="Logo Universidad de Córdoba"
-             width={150} // Adjust width as needed
-             height={40} // Adjust height as needed
-             className="h-10 w-auto" // Maintain aspect ratio
+             width={150}
+             height={40}
+             className="h-10 w-auto"
              priority
            />
           <span className="font-poppins text-xl font-bold text-primary hidden sm:inline ml-2">
-            EduSmart Hub
+            EduSmart {/* Updated Name */}
           </span>
            <span className="font-poppins text-lg font-bold text-primary sm:hidden ml-1">
-            EduSmart
+            EduSmart {/* Updated Name */}
           </span>
         </Link>
 
@@ -77,15 +75,14 @@ export default function Header() {
                     {/* Mobile Menu Header */}
                     <div className="flex items-center justify-between p-4 border-b">
                          <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                             {/* University of Córdoba Logo (Mobile) */}
                             <Image
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Unicor.svg/1200px-Unicor.svg.png"
                                 alt="Logo Universidad de Córdoba"
-                                width={100} // Smaller width for mobile menu
-                                height={26} // Adjust height accordingly
+                                width={100}
+                                height={26}
                                 className="h-7 w-auto"
                             />
-                           {/* <span className="font-poppins text-lg font-semibold text-primary">EduSmart Hub</span> */}
+                           <span className="font-poppins text-lg font-semibold text-primary ml-1">EduSmart</span> {/* Updated Name */}
                          </Link>
                         <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)} className="h-8 w-8">
                            <X className="h-5 w-5 text-muted-foreground" />

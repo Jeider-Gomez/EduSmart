@@ -18,7 +18,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'EduSmart Hub',
+  title: 'EduSmart', // Updated title
   description: 'EduSmart – Aprende por tu cuenta, pero con propósito',
 };
 
