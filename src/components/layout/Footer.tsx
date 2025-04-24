@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Mail, Facebook, Twitter, Linkedin, Phone } from 'lucide-react';
 import Image from 'next/image';
-import { Separator } from '@/components/ui/separator'; // Separator might not be needed if everything is stacked
 
 export default function Footer() {
   return (
@@ -22,7 +21,8 @@ export default function Footer() {
           </Link>
 
           {/* Contact Info */}
-          <div className="flex flex-col items-center gap-1 sm:flex-row sm:gap-x-4">
+           {/* Added sm:justify-center to center items within the row on larger screens */}
+          <div className="flex flex-col items-center gap-1 sm:flex-row sm:justify-center sm:gap-x-4">
              <a
                href="mailto:soporteova@unicor.edu.co"
                className="flex items-center gap-1 font-open-sans text-xs text-muted-foreground hover:text-primary"
@@ -40,7 +40,8 @@ export default function Footer() {
           </div>
 
           {/* Social Media Links */}
-          <div className="flex gap-3">
+          {/* Added justify-center to center the icons within the row */}
+          <div className="flex justify-center gap-3">
             <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground/80 hover:text-primary">
               <Facebook className="h-4 w-4" />
               <span className="sr-only">Facebook</span>
