@@ -20,7 +20,7 @@ export default function Footer() {
               />
           </Link>
 
-          {/* Contact Info */}
+          {/* Contact Info - Always in a row */}
           <div className="flex flex-row items-center gap-x-3"> {/* Always row, adjusted gap */}
              <a
                href="mailto:soporteova@unicor.edu.co"
