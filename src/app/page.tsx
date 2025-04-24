@@ -28,13 +28,14 @@ export default function Home() {
         </div>
 
         {/* Image */}
-        <div className="flex justify-center md:justify-end">
+        <div className="flex justify-center md:justify-end h-full"> {/* Ensure container takes height */}
            <Image
              src="https://cdn.pixabay.com/photo/2018/07/10/10/29/girl-3528292_960_720.jpg" // Updated image source
              alt="Estudiante aprendiendo en línea"
              width={600}
-             height={400} // Adjusted height for the new image aspect ratio
-             className="rounded-lg shadow-xl object-cover" // Added object-cover
+             height={0} // Remove fixed height, aspect ratio maintained by width/height props, but layout dictates size
+             sizes="(max-width: 768px) 100vw, 50vw" // Inform browser about expected size
+             className="rounded-lg shadow-xl object-cover w-full h-full max-h-[450px] md:max-h-full" // Use h-full, object-cover, maybe add max-h
              priority // Load the main image faster
            />
         </div>
