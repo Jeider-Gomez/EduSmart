@@ -30,11 +30,11 @@ export default function Home() {
         {/* Image */}
         <div className="flex justify-center md:justify-end">
            <Image
-             src="https://picsum.photos/seed/edusmart-main/600/450" // Slightly adjusted seed/size
-             alt="Ilustración educativa para EduSmart"
+             src="https://cdn.pixabay.com/photo/2018/07/10/10/29/girl-3528292_960_720.jpg" // Updated image source
+             alt="Estudiante aprendiendo en línea"
              width={600}
-             height={450}
-             className="rounded-lg shadow-xl" // Enhanced shadow
+             height={400} // Adjusted height for the new image aspect ratio
+             className="rounded-lg shadow-xl object-cover" // Added object-cover
              priority // Load the main image faster
            />
         </div>
