@@ -12,22 +12,23 @@ export default function Footer() {
         {/* Main container: Single row, centered items, allows wrapping on small screens */}
         <div className="flex flex-row flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center text-xs">
 
-          {/* Logo and Copyright combined */}
-          <div className="flex items-center gap-2">
-             <Link href="/" className="flex-shrink-0">
-                 <Image
-                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Unicor.svg/1200px-Unicor.svg.png"
-                   alt="Logo Universidad de Córdoba"
-                   width={100} // Reduced size slightly
-                   height={26} // Adjust height proportionally
-                   className="h-6 w-auto" // Control height
-                 />
-             </Link>
-              <p className="font-open-sans text-muted-foreground">
-                  © {new Date().getFullYear()} EduSmart. Unicor. {/* Shortened */}
-              </p>
-          </div>
+          {/* Logo */}
+           <Link href="/" className="flex-shrink-0">
+               <Image
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Unicor.svg/1200px-Unicor.svg.png"
+                 alt="Logo Universidad de Córdoba"
+                 width={100} // Reduced size slightly
+                 height={26} // Adjust height proportionally
+                 className="h-6 w-auto" // Control height
+               />
+           </Link>
 
+          <Separator />
+
+          {/* Copyright */}
+          <p className="font-open-sans text-muted-foreground">
+              © {new Date().getFullYear()} EduSmart. Unicor. {/* Shortened */}
+          </p>
 
           <Separator />
 
