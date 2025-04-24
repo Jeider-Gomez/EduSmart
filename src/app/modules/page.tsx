@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, PlayCircle, CircleDashed } from 'lucide-react';
+import { CheckCircle, PlayCircle, CircleDashed, Brain, Wrench, Route, Info, Users } from 'lucide-react'; // Updated icons
 import { Badge } from '@/components/ui/badge';
 
-// Mock data for modules - replace with actual data fetching later
+// Updated module data based on the prompt
 const modules = [
-  { id: '1', title: 'Módulo 1: Introducción a la IA', description: 'Conceptos básicos y aplicaciones de la Inteligencia Artificial.', status: 'completed', icon: '🧠' },
-  { id: '2', title: 'Módulo 2: Aprendizaje Automático', description: 'Explora los algoritmos y técnicas fundamentales del Machine Learning.', status: 'in_progress', icon: '⚙️' },
-  { id: '3', title: 'Módulo 3: Redes Neuronales', description: 'Sumérgete en el mundo del Deep Learning y las redes neuronales.', status: 'not_started', icon: '🕸️' },
-  { id: '4', title: 'Módulo 4: Procesamiento del Lenguaje Natural', description: 'Comprende cómo las máquinas procesan y entienden el lenguaje humano.', status: 'not_started', icon: '🗣️' },
-  { id: '5', title: 'Módulo 5: Ética en la IA', description: 'Reflexiona sobre los desafíos éticos y sociales de la IA.', status: 'not_started', icon: '⚖️' },
+  { id: '1', title: 'Módulo 1: Smart Learner', description: 'Descubre tu estilo de aprendizaje y lo que eso dice sobre tu forma de estudiar.', status: 'completed', icon: <Brain className="h-8 w-8 text-primary" /> },
+  { id: '2', title: 'Módulo 2: Learning Toolkit', description: 'Explora estrategias y técnicas de estudio visuales, escritas y conceptuales.', status: 'in_progress', icon: <Wrench className="h-8 w-8 text-secondary" /> },
+  { id: '3', title: 'Módulo 3: Mi Ruta Self-Learning', description: 'Crea tu propio plan de estudio con metas claras y herramientas digitales.', status: 'not_started', icon: <Route className="h-8 w-8 text-accent" /> },
+  { id: '4', title: 'Módulo 4: Info-Skills', description: 'Aprende a buscar, organizar y representar información útil y confiable.', status: 'not_started', icon: <Info className="h-8 w-8 text-yellow-600" /> }, // Using yellow color directly as theme doesn't have many variations easily accessible
+  { id: '5', title: 'Módulo 5: Diversos para aprender', description: 'Reconoce tu ritmo, adapta tus métodos y diseña una guía de aprendizaje personalizada.', status: 'not_started', icon: <Users className="h-8 w-8 text-purple-600" /> }, // Using purple color directly
 ];
 
 const getStatusInfo = (status: string) => {
@@ -27,15 +27,18 @@ const getStatusInfo = (status: string) => {
 export default function ModulesPage() {
   return (
     <div className="container mx-auto px-4 py-8 md:py-16">
-      <h1 className="font-poppins mb-8 text-3xl font-bold text-secondary md:text-4xl">
+      <h1 className="font-poppins mb-4 text-3xl font-bold text-secondary md:text-4xl">
         Módulos Disponibles
       </h1>
+      <p className="font-open-sans mb-8 text-muted-foreground">
+        A continuación encontrarás cinco módulos diseñados para ayudarte a explorar y fortalecer tu autonomía como estudiante. Puedes avanzar a tu ritmo. ¡Empieza por el que más te llame la atención!
+      </p>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {modules.map((module) => {
           const statusInfo = getStatusInfo(module.status);
-          const buttonLabel = module.status === 'not_started' ? 'Empezar' : 'Continuar';
-          const buttonIcon = module.status === 'not_started' ? <PlayCircle className="mr-2 h-4 w-4" /> : <PlayCircle className="mr-2 h-4 w-4" />;
+          const buttonLabel = module.status === 'not_started' ? 'Iniciar módulo' : 'Continuar'; // Updated button labels slightly
+          const buttonIcon = <PlayCircle className="mr-2 h-4 w-4" />; // Simplified icon logic
 
           return (
             <Card key={module.id} className="flex flex-col justify-between overflow-hidden shadow-sm transition-shadow hover:shadow-lg">

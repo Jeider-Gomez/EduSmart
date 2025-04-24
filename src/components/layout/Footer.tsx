@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Mail, Facebook, Twitter, Linkedin, Phone } from 'lucide-react'; // Added Phone
 
 export default function Footer() {
   return (
@@ -32,6 +32,9 @@ export default function Footer() {
             <Link href="/progress" className="font-open-sans text-sm text-muted-foreground hover:text-primary">
               Mi Progreso
             </Link>
+             <Link href="/help" className="font-open-sans text-sm text-muted-foreground hover:text-primary">
+               Ayuda
+             </Link>
           </nav>
         </div>
 
@@ -39,11 +42,18 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-end">
           <h4 className="font-poppins mb-2 font-medium text-secondary">Contacto</h4>
           <a
-            href="mailto:soporte@institucion.edu"
-            className="mb-4 flex items-center gap-2 font-open-sans text-sm text-muted-foreground hover:text-primary"
+            href="mailto:soporteova@unicor.edu.co" // Updated Email
+            className="mb-2 flex items-center gap-2 font-open-sans text-sm text-muted-foreground hover:text-primary"
           >
             <Mail className="h-4 w-4" />
-            soporte@institucion.edu
+            soporteova@unicor.edu.co
+          </a>
+          <a
+            href="tel:+573052760851" // Added Phone
+            className="mb-4 flex items-center gap-2 font-open-sans text-sm text-muted-foreground hover:text-primary"
+          >
+            <Phone className="h-4 w-4" />
+             (+57) 305 276 0851
           </a>
           <div className="flex gap-4">
             <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">

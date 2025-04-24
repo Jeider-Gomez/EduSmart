@@ -4,16 +4,16 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, CircleDashed, Download, Award } from 'lucide-react';
+import { CheckCircle, CircleDashed, Download, Award, FileText } from 'lucide-react'; // Added FileText for Bitácora
 import Link from 'next/link';
 
-// Mock data - replace with actual progress fetching (e.g., from localStorage or API)
+// Mock data - updated module titles based on previous changes
 const initialModulesStatus = [
-  { id: '1', title: 'Módulo 1: Introducción a la IA', completed: true },
-  { id: '2', title: 'Módulo 2: Aprendizaje Automático', completed: true },
-  { id: '3', title: 'Módulo 3: Redes Neuronales', completed: false },
-  { id: '4', title: 'Módulo 4: Procesamiento del Lenguaje Natural', completed: false },
-  { id: '5', title: 'Módulo 5: Ética en la IA', completed: false },
+  { id: '1', title: 'Módulo 1: Smart Learner', completed: true },
+  { id: '2', title: 'Módulo 2: Learning Toolkit', completed: true },
+  { id: '3', title: 'Módulo 3: Mi Ruta Self-Learning', completed: false },
+  { id: '4', title: 'Módulo 4: Info-Skills', completed: false },
+  { id: '5', title: 'Módulo 5: Diversos para aprender', completed: false },
 ];
 
 export default function ProgressPage() {
@@ -25,6 +25,12 @@ export default function ProgressPage() {
      // Example: const savedProgress = JSON.parse(localStorage.getItem('eduSmartProgress') || 'null');
      // if (savedProgress) setModulesStatus(savedProgress);
      console.log("Fetching or setting initial progress...");
+
+     // --- Development Helper: Simulate completion ---
+     // Uncomment below to test the completed state
+     // setModulesStatus(initialModulesStatus.map(m => ({ ...m, completed: true })));
+     // --- End Development Helper ---
+
    }, []);
 
 
@@ -35,21 +41,24 @@ export default function ProgressPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-16">
-      <h1 className="font-poppins mb-8 text-3xl font-bold text-secondary md:text-4xl">
+      <h1 className="font-poppins mb-4 text-3xl font-bold text-secondary md:text-4xl">
         Mi Progreso
       </h1>
+       <p className="font-open-sans mb-8 text-muted-foreground">
+           Aquí puedes ver cuánto has avanzado y descargar tu bitácora de aprendizaje al finalizar todos los módulos.
+       </p>
 
       <Card className="mb-8 shadow-md">
         <CardHeader>
           <CardTitle className="font-poppins text-xl text-primary">Resumen General</CardTitle>
           <CardDescription className="font-open-sans">
-            Has completado {completedModules} de {totalModules} módulos.
+             Has completado {completedModules} de {totalModules} módulos. ({progressPercentage}% completado)
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-4">
-            <Progress value={progressPercentage} className="w-full h-3" />
-            <span className="font-poppins font-semibold text-lg text-primary">{progressPercentage}%</span>
+            <Progress value={progressPercentage} className="w-full h-3" aria-label={`${progressPercentage}% completado`} />
+             {/* <span className="font-poppins font-semibold text-lg text-primary">{progressPercentage}%</span> */}
           </div>
         </CardContent>
       </Card>
@@ -64,17 +73,22 @@ export default function ProgressPage() {
                <li key={module.id} className="flex items-center justify-between rounded-md border p-4">
                   <div className="flex items-center gap-3">
                      {module.completed ? (
-                       <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                       <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" aria-label="Completado"/>
                      ) : (
-                       <CircleDashed className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                       <CircleDashed className="h-5 w-5 text-muted-foreground flex-shrink-0" aria-label="No iniciado o en progreso"/>
                      )}
                      <span className={`font-open-sans ${module.completed ? 'text-foreground' : 'text-muted-foreground'}`}>
                        {module.title}
                      </span>
                   </div>
-                  {!module.completed && (
+                   {/* Show "Continuar" or "Ver" based on status */}
+                   {module.completed ? (
+                        <span className="text-sm text-green-600 font-medium">Completado</span>
+                   ) : (
                       <Button variant="link" size="sm" asChild>
-                         <Link href={`/modules/${module.id}`}>Continuar</Link>
+                         <Link href={`/modules/${module.id}`}>
+                            {modulesStatus[moduleIds.indexOf(module.id)-1]?.completed || module.id === '1' ? 'Continuar' : 'Ver'} {/* Logic to show Continue only if previous is done or it's the first */}
+                         </Link>
                        </Button>
                   )}
                </li>
@@ -84,11 +98,14 @@ export default function ProgressPage() {
          {allModulesCompleted && (
             <CardContent className="border-t pt-6 text-center">
                  <Award className="mx-auto h-12 w-12 text-yellow-500 mb-4" />
-                 <h3 className="font-poppins text-lg font-semibold text-primary mb-2">¡Felicidades!</h3>
-                 <p className="font-open-sans text-muted-foreground mb-4">Has completado todos los módulos del OVA EduSmart.</p>
-                 <Button>
-                   <Download className="mr-2 h-4 w-4" />
-                   Descargar Certificado / Bitácora
+                 <h3 className="font-poppins text-lg font-semibold text-primary mb-2">¡Felicidades por completar tu camino con EduSmart!</h3>
+                 <p className="font-open-sans text-muted-foreground mb-4 max-w-prose mx-auto">
+                     Este documento reúne tus reflexiones, estrategias y planificación. Guárdalo como guía para el resto de tu vida universitaria.
+                 </p>
+                 {/* Placeholder for actual download functionality */}
+                 <Button onClick={() => alert('Funcionalidad de descarga no implementada.')}>
+                   <FileText className="mr-2 h-4 w-4" />
+                   Descargar Bitácora
                  </Button>
             </CardContent>
          )}
@@ -96,3 +113,6 @@ export default function ProgressPage() {
     </div>
   );
 }
+
+// Helper to get module IDs in order - assumes initialModulesStatus is ordered
+const moduleIds = initialModulesStatus.map(m => m.id);

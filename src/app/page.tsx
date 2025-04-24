@@ -11,18 +11,18 @@ export default function Home() {
         {/* Text Content */}
         <div className="space-y-6">
           <h1 className="font-poppins text-4xl font-bold tracking-tight text-primary md:text-5xl">
-            EduSmart Hub
+            EduSmart: Aprende por tu cuenta, pero con propósito
           </h1>
-          <p className="font-poppins text-xl font-semibold text-secondary">
-            Aprende por tu cuenta, pero con propósito
-          </p>
           <p className="font-open-sans text-lg text-muted-foreground">
-            Explora nuestros módulos interactivos diseñados para estudiantes universitarios. Aprende a tu propio ritmo, refuerza tus conocimientos y sigue tu progreso de forma autónoma.
+            Este curso virtual está diseñado para ayudarte a identificar cómo aprendes mejor, desarrollar estrategias eficaces, planificar tu tiempo, gestionar información y construir tu camino como estudiante autónomo. Ideal para estudiantes de primer semestre que buscan potenciar su desempeño académico desde el inicio.
           </p>
+          <blockquote className="font-poppins mt-4 border-l-4 border-accent pl-4 italic text-secondary">
+            “La autonomía no es hacer todo solo, es aprender a decidir cómo, cuándo y con qué avanzar.”
+          </blockquote>
           <Button asChild size="lg" className="rounded-full shadow-md hover:shadow-lg transition-shadow">
             <Link href="/modules">
               <ArrowRight className="mr-2 h-5 w-5" />
-              Empezar a Aprender
+              Iniciar OVA
             </Link>
           </Button>
         </div>
