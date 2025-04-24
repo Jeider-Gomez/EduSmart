@@ -1,20 +1,20 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Lightbulb, CheckSquare, BarChart3 } from 'lucide-react'; // Added icons
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8 md:py-16">
-      <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+      <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
         {/* Text Content */}
         <div className="space-y-6">
-          <h1 className="font-poppins text-4xl font-bold tracking-tight text-primary md:text-5xl">
+          <h1 className="font-poppins text-4xl font-bold tracking-tight text-primary md:text-5xl lg:text-6xl">
             EduSmart: Aprende por tu cuenta, pero con propósito
           </h1>
           <p className="font-open-sans text-lg text-muted-foreground">
-            Este curso virtual está diseñado para ayudarte a identificar cómo aprendes mejor, desarrollar estrategias eficaces, planificar tu tiempo, gestionar información y construir tu camino como estudiante autónomo. Ideal para estudiantes de primer semestre que buscan potenciar su desempeño académico desde el inicio.
+             Este curso virtual está diseñado para ayudarte a identificar cómo aprendes mejor, desarrollar estrategias eficaces, planificar tu tiempo, gestionar información y construir tu camino como estudiante autónomo. Ideal para estudiantes de primer semestre que buscan potenciar su desempeño académico desde el inicio.
           </p>
           <blockquote className="font-poppins mt-4 border-l-4 border-accent pl-4 italic text-secondary">
             “La autonomía no es hacer todo solo, es aprender a decidir cómo, cuándo y con qué avanzar.”
@@ -22,7 +22,7 @@ export default function Home() {
           <Button asChild size="lg" className="rounded-full shadow-md hover:shadow-lg transition-shadow">
             <Link href="/modules">
               <ArrowRight className="mr-2 h-5 w-5" />
-              Iniciar OVA
+              Comenzar
             </Link>
           </Button>
         </div>
@@ -30,44 +30,47 @@ export default function Home() {
         {/* Image */}
         <div className="flex justify-center md:justify-end">
            <Image
-             src="https://picsum.photos/seed/edusmart/600/400"
-             alt="EduSmart learning illustration"
+             src="https://picsum.photos/seed/edusmart-main/600/450" // Slightly adjusted seed/size
+             alt="Ilustración educativa para EduSmart"
              width={600}
-             height={400}
-             className="rounded-lg shadow-lg"
+             height={450}
+             className="rounded-lg shadow-xl" // Enhanced shadow
              priority // Load the main image faster
            />
         </div>
       </div>
 
-      {/* Optional: Add a section highlighting key features or benefits */}
+      {/* Section highlighting key features */}
       <section className="mt-16 md:mt-24">
-         <h2 className="font-poppins mb-8 text-center text-3xl font-semibold text-secondary">
-           ¿Por qué EduSmart?
+         <h2 className="font-poppins mb-10 text-center text-3xl font-semibold text-secondary">
+           ¿Qué encontrarás en EduSmart?
          </h2>
-         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-           <Card className="shadow-sm transition-shadow hover:shadow-md">
-             <CardHeader>
+         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+           <Card className="shadow-sm transition-shadow hover:shadow-md text-center border-primary/20">
+             <CardHeader className="items-center">
+                <Lightbulb className="h-10 w-10 text-primary mb-2"/>
                <CardTitle className="font-poppins text-primary">Aprendizaje Autónomo</CardTitle>
              </CardHeader>
              <CardContent>
-               <p className="font-open-sans text-muted-foreground">Accede a todos los módulos y recursos cuando quieras, sin horarios fijos.</p>
+               <p className="font-open-sans text-muted-foreground">Accede a todos los módulos y recursos cuando quieras, a tu propio ritmo.</p>
              </CardContent>
            </Card>
-           <Card className="shadow-sm transition-shadow hover:shadow-md">
-             <CardHeader>
-               <CardTitle className="font-poppins text-primary">Contenido Interactivo</CardTitle>
+           <Card className="shadow-sm transition-shadow hover:shadow-md text-center border-secondary/20">
+             <CardHeader className="items-center">
+                <CheckSquare className="h-10 w-10 text-secondary mb-2"/>
+               <CardTitle className="font-poppins text-secondary">Contenido Interactivo</CardTitle>
              </CardHeader>
              <CardContent>
-               <p className="font-open-sans text-muted-foreground">Participa en actividades, videos y evaluaciones para reforzar tu aprendizaje.</p>
+               <p className="font-open-sans text-muted-foreground">Participa en actividades, videos y reflexiones para reforzar tu aprendizaje.</p>
              </CardContent>
            </Card>
-           <Card className="shadow-sm transition-shadow hover:shadow-md">
-             <CardHeader>
-               <CardTitle className="font-poppins text-primary">Seguimiento de Progreso</CardTitle>
+           <Card className="shadow-sm transition-shadow hover:shadow-md text-center border-accent/20">
+             <CardHeader className="items-center">
+                <BarChart3 className="h-10 w-10 text-accent mb-2"/>
+               <CardTitle className="font-poppins text-accent">Seguimiento Personal</CardTitle>
              </CardHeader>
              <CardContent>
-               <p className="font-open-sans text-muted-foreground">Visualiza tus avances y módulos completados fácilmente.</p>
+               <p className="font-open-sans text-muted-foreground">Visualiza tus avances, módulos completados y descarga tu bitácora final.</p>
              </CardContent>
            </Card>
          </div>
