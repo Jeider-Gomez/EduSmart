@@ -4,44 +4,44 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-border/40 bg-muted/40 py-6">
+    <footer className="mt-auto border-t border-border/40 bg-muted/40 py-4"> {/* Reduced vertical padding */}
       <div className="container mx-auto px-4">
-        {/* Main container: Stack elements vertically and center them horizontally */}
-        <div className="flex flex-col items-center gap-4 text-center">
+        {/* Main container: Single row, centered items, allows wrapping on small screens */}
+        <div className="flex flex-row flex-wrap items-center justify-center gap-4 sm:gap-6 text-center">
 
           {/* Logo */}
-          <Link href="/">
+          <Link href="/" className="flex-shrink-0">
               <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Unicor.svg/1200px-Unicor.svg.png"
                 alt="Logo Universidad de Córdoba"
-                width={120} // Slightly larger logo for better visibility
-                height={31} // Adjust height proportionally
-                className="h-8 w-auto" // Control height
+                width={100} // Reduced size slightly
+                height={26} // Adjust height proportionally
+                className="h-7 w-auto" // Control height
               />
           </Link>
 
           {/* Contact Info */}
-           {/* Added sm:justify-center to center items within the row on larger screens */}
-          <div className="flex flex-col items-center gap-1 sm:flex-row sm:justify-center sm:gap-x-4">
+          <div className="flex flex-row items-center gap-x-3"> {/* Always row, adjusted gap */}
              <a
                href="mailto:soporteova@unicor.edu.co"
                className="flex items-center gap-1 font-open-sans text-xs text-muted-foreground hover:text-primary"
+               aria-label="Email de soporte"
              >
-               <Mail className="h-3.5 w-3.5" />
-               soporteova@unicor.edu.co
+               <Mail className="h-3.5 w-3.5 flex-shrink-0" />
+               <span className="hidden sm:inline">soporteova@unicor.edu.co</span>
              </a>
              <a
                href="tel:+573052760851"
                className="flex items-center gap-1 font-open-sans text-xs text-muted-foreground hover:text-primary"
+               aria-label="Teléfono de soporte"
              >
-               <Phone className="h-3.5 w-3.5" />
-               (+57) 305 276 0851
+               <Phone className="h-3.5 w-3.5 flex-shrink-0" />
+               <span className="hidden sm:inline">(+57) 305 276 0851</span>
              </a>
           </div>
 
           {/* Social Media Links */}
-          {/* Added justify-center to center the icons within the row */}
-          <div className="flex justify-center gap-3">
+          <div className="flex flex-row items-center gap-3">
             <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground/80 hover:text-primary">
               <Facebook className="h-4 w-4" />
               <span className="sr-only">Facebook</span>
@@ -58,7 +58,7 @@ export default function Footer() {
 
            {/* Copyright */}
            <p className="font-open-sans text-xs text-muted-foreground">
-               © {new Date().getFullYear()} EduSmart. Universidad de Córdoba.
+               © {new Date().getFullYear()} EduSmart. Unicor. {/* Shortened */}
            </p>
 
         </div>
