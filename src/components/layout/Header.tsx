@@ -29,7 +29,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
            {/* University of Córdoba Logo */}
            <Image
-             src="https://cintia.unicordoba.edu.co/wp-content/uploads/2023/02/unicordoba_logo.png"
+             src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Unicor.svg/1200px-Unicor.svg.png"
              alt="Logo Universidad de Córdoba"
              width={150} // Adjust width as needed
              height={40} // Adjust height as needed
@@ -79,7 +79,7 @@ export default function Header() {
                          <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                              {/* University of Córdoba Logo (Mobile) */}
                             <Image
-                                src="https://cintia.unicordoba.edu.co/wp-content/uploads/2023/02/unicordoba_logo.png"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Unicor.svg/1200px-Unicor.svg.png"
                                 alt="Logo Universidad de Córdoba"
                                 width={100} // Smaller width for mobile menu
                                 height={26} // Adjust height accordingly

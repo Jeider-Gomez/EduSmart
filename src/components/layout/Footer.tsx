@@ -11,7 +11,7 @@ export default function Footer() {
            <div className="flex items-center gap-2 mb-2">
              {/* University of Córdoba Logo */}
               <Image
-                src="https://cintia.unicordoba.edu.co/wp-content/uploads/2023/02/unicordoba_logo.png"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Unicor.svg/1200px-Unicor.svg.png"
                 alt="Logo Universidad de Córdoba"
                 width={120} // Adjust width for footer
                 height={32} // Adjust height for footer
