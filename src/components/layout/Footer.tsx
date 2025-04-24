@@ -3,34 +3,33 @@ import { Mail, Facebook, Twitter, Linkedin, Phone } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
-const Separator = () => <span className="mx-2 text-muted-foreground/60">|</span>;
+const Separator = () => <span className="mx-2 text-muted-foreground/60 hidden sm:inline">|</span>;
 
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-border/40 bg-muted/40 py-4"> {/* Reduced vertical padding */}
+    <footer className="mt-auto border-t border-border/40 bg-muted/50 py-4"> {/* Changed background to muted/50 */}
       <div className="container mx-auto px-4">
         {/* Main container: Single row, centered items, allows wrapping on small screens */}
         <div className="flex flex-row flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center text-xs">
 
-          {/* Logo */}
-          <Link href="/" className="flex flex-shrink-0 items-center">
-              <Image
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Unicor.svg/1200px-Unicor.svg.png"
-                alt="Logo Universidad de Córdoba"
-                width={100} // Reduced size slightly
-                height={26} // Adjust height proportionally
-                className="h-6 w-auto" // Control height
-              />
-          </Link>
+          {/* Logo and Copyright combined */}
+          <div className="flex items-center gap-2">
+             <Link href="/" className="flex-shrink-0">
+                 <Image
+                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Unicor.svg/1200px-Unicor.svg.png"
+                   alt="Logo Universidad de Córdoba"
+                   width={100} // Reduced size slightly
+                   height={26} // Adjust height proportionally
+                   className="h-6 w-auto" // Control height
+                 />
+             </Link>
+              <p className="font-open-sans text-muted-foreground">
+                  © {new Date().getFullYear()} EduSmart. Unicor. {/* Shortened */}
+              </p>
+          </div>
+
 
           <Separator />
-
-           {/* Copyright */}
-           <p className="font-open-sans text-muted-foreground">
-               © {new Date().getFullYear()} EduSmart. Unicor. {/* Shortened */}
-           </p>
-
-            <Separator />
 
             {/* Email Contact */}
             <a
