@@ -1,6 +1,8 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card'; // Corrected import
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Download, Link as LinkIcon, FileText, Image as ImageIcon, Calendar, Brain, SearchCheck, Video } from 'lucide-react'; // Added Video icon
+import { Download, Link as LinkIcon, FileText, Image as ImageIcon, Calendar, Brain, SearchCheck, Video } from 'lucide-react';
+import Image from 'next/image'; // Import Next Image component
 
 // Updated resources data based on the new detailed prompt
 const resources = [
@@ -126,4 +128,3 @@ export default function ResourcesPage() {
     </div>
   );
 }
-```
