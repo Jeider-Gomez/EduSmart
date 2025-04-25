@@ -1,96 +1,96 @@
-# EduSmart - Next.js Application
+# EduSmart - Aplicación Next.js
 
-This is a Next.js project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Este es un proyecto Next.js iniciado con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Empezando
 
-First, run the development server:
+Primero, ejecute el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
+# o
 yarn dev
-# or
+# o
 pnpm dev
-# or
+# o
 bun dev
 ```
 
-Open [http://localhost:9002](http://localhost:9002) with your browser to see the result.
+Abra [http://localhost:9002](http://localhost:9002) con su navegador para ver el resultado.
 
-You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
+Puedes empezar a editar la página modificando `src/app/page.tsx`. La página se actualiza automáticamente a medida que editas el archivo.
 
-## Learn More
+## Más información
 
-To learn more about Next.js, take a look at the following resources:
+Para obtener más información sobre Next.js, consulte los siguientes recursos:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Documentación de Next.js](https://nextjs.org/docs) - obtenga información sobre las características y la API de Next.js.
+- [Aprenda Next.js](https://nextjs.org/learn) - un tutorial interactivo de Next.js.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Puedes consultar [el repositorio de GitHub de Next.js](https://github.com/vercel/next.js/) - ¡tus comentarios y contribuciones son bienvenidos!
 
-## Deploying to GitHub Pages
+## Implementación en páginas de GitHub
 
-This project is configured for static export, making it suitable for deployment on GitHub Pages. Follow these steps carefully:
+Este proyecto está configurado para exportación estática, lo que lo hace apto para su implementación en páginas de GitHub. Siga estos pasos cuidadosamente:
 
-**1. Build the Static Site:**
+**1. Construya el sitio estático:**
 
-Run the following command in your project's root directory:
+Ejecute el siguiente comando en el directorio raíz de su proyecto:
 ```bash
 npm run build:static
 ```
-This command first builds the Next.js application (`npm run build`) and then exports it to static HTML/CSS/JS files (`npm run export`). The static files will be generated in the `out` directory.
+Este comando primero crea la aplicación Next.js (`npm run build`) y luego la exporta a archivos HTML/CSS/JS estáticos (`npm run export`). Los archivos estáticos se generarán en el directorio `out`.
 
-**2. Push the Static Files to GitHub:**
+**2. Sube los archivos estáticos a GitHub:**
 
-You need to push the contents of the `out` directory (not the entire project source code) to a specific branch that GitHub Pages will serve. The recommended method is using the `gh-pages` branch:
+Debes enviar el contenido del directorio `out` (no todo el código fuente del proyecto) a una rama específica que GitHub Pages servirá. El método recomendado es usar la rama `gh-pages`:
 
-*   **Method: Use `gh-pages` branch (Recommended)**
-    *   Make sure your main project code changes are committed to your `main` (or `master`) branch first.
-    *   Install the `gh-pages` helper package if you haven't already:
+*   **Método: Usar rama `gh-pages` (Recomendado)**
+    *   Asegúrese de que los cambios en el código del proyecto principal se confirmen primero en su rama `main` (o `master`).
+    *   Instale el paquete auxiliar `gh-pages` si aún no lo ha hecho:
         ```bash
         npm install gh-pages --save-dev
         ```
-    *   Run the following command **from your project's root directory** (the one containing `package.json`):
+    *   Ejecute el siguiente comando **desde el directorio raíz de su proyecto** (el que contiene `package.json`):
         ```bash
         npx gh-pages -d out -t true
         ```
-        *   `-d out`: Specifies that the `out` directory contains the files to deploy.
-        *   `-t true`: Adds a `.nojekyll` file automatically to the deployment branch, which is important for GitHub Pages to serve the site correctly without Jekyll interference.
+        *   `-d out`: Especifica que el directorio `out` contiene los archivos a implementar.
+        *   `-t true`: Agrega un archivo `.nojekyll` automáticamente a la rama de implementación, lo cual es importante para que GitHub Pages sirva al sitio correctamente sin la interferencia de Jekyll.
 
-**3. Configure GitHub Pages Settings:**
+**3. Configurar los ajustes de las páginas de GitHub:**
 
-**This is a crucial step!** If you see your README file or a 404 error instead of your website, it's likely because GitHub Pages is not configured correctly.
+**¡Este es un paso crucial!** Si ves tu archivo README o un error 404 en lugar de tu sitio web, probablemente se deba a que GitHub Pages no está configurado correctamente.
 
-*   Go to your repository on GitHub.
-*   Click on the "Settings" tab.
-*   In the left sidebar, navigate to "Pages".
-*   Under "Build and deployment":
-    *   Set the **Source** to **"Deploy from a branch"**.
-    *   Under **Branch**, select the `gh-pages` branch (or `main`/`master` if you used Method 1 in step 2, although `gh-pages` is preferred for project sites).
-    *   Ensure the folder is set to `/ (root)`.
-    *   Click **"Save"**.
+*   Vaya a su repositorio en GitHub.
+*   Haga clic en la pestaña **"Settings"** (Configuración).
+*   En la barra lateral izquierda, navegue hasta **"Pages"** (Páginas).
+*   En **"Build and deployment"** (Construcción e implementación):
+    *   Establezca **Source** (Fuente) en **"Deploy from a branch"** (Implementar desde una rama).
+    *   En **Branch** (Rama), seleccione la rama **`gh-pages`** (o `main`/`master` si utilizó otro método, aunque `gh-pages` es el preferido para los sitios de proyectos).
+    *   **Asegúrese de que la carpeta esté configurada en `/ (root)`**.
+    *   Haga clic en **"Save"** (Guardar).
 
-**4. Configure `basePath` (If Deploying to a Project Repository):**
+**4. Configurar `basePath` (Si se implementa en un repositorio de proyecto):**
 
-*   GitHub Pages deploys project sites to a subdirectory (e.g., `https://your-username.github.io/your-repo-name/`). User/Organization sites deploy to the root (`https://your-username.github.io/`).
-*   **If your site URL includes your repository name (a project site)**, you MUST configure the `basePath` in your Next.js config to match the repository name. **Skipping this step for project sites is the most common cause of 404 errors or broken styling/images.**
-    *   Open `next.config.ts`.
-    *   Add or uncomment the `basePath` property:
+*   GitHub Pages implementa los sitios del proyecto en un subdirectorio (p. ej., `https://your-username.github.io/your-repo-name/`). Los sitios de usuario/organización se implementan en la raíz (`https://your-username.github.io/`).
+*   **Si la URL de su sitio incluye el nombre de su repositorio (un sitio de proyecto)**, **DEBE** configurar `basePath` en su configuración de Next.js para que coincida con el nombre del repositorio. **Omitir este paso para sitios de proyecto es la causa más común de errores 404 o de que se muestre el README en lugar del sitio web.**
+    *   Abra `next.config.ts`.
+    *   **Asegúrese de descomentar la línea `basePath`** y reemplace `'your-repo-name'` con el nombre *exacto* de su repositorio en GitHub:
         ```ts
         import type {NextConfig} from 'next';
 
         const nextConfig: NextConfig = {
-          output: 'export', // Keep this for static export
-          // *** Add or uncomment the line below, replacing 'your-repo-name' ***
-          // basePath: '/your-repo-name',
+          output: 'export', // Mantener esto para exportación estática
+          // *** ¡IMPORTANTE! Reemplace 'your-repo-name' con el nombre de su repositorio ***
+          basePath: '/your-repo-name', // <--- DESCOMENTE Y EDITE ESTA LÍNEA
           images: {
-             unoptimized: true, // Required for static export with next/image
+             unoptimized: true, // Requerido para exportación estática con next/image
              remotePatterns: [
-                 // ... your existing remote patterns ...
+                 // ... sus patrones remotos existentes ...
              ],
           },
-          // ... other configurations ...
+          // ... otras configuraciones ...
           typescript: {
             ignoreBuildErrors: true,
           },
@@ -101,22 +101,22 @@ You need to push the contents of the `out` directory (not the entire project sou
 
         export default nextConfig;
         ```
-    *   Replace `/your-repo-name` with the actual name of your GitHub repository (e.g., `/EduSmart`).
-    *   **Important:** After modifying `next.config.ts`, you **must rebuild** the static site (`npm run build:static`) and **re-push** it to the `gh-pages` branch (`npx gh-pages -d out -t true`) before the changes take effect on GitHub Pages.
+    *   Ejemplo: Si su repositorio se llama `EduSmart-App`, la línea debería ser `basePath: '/EduSmart-App',`.
+    *   **Importante:** Después de modificar `next.config.ts`, **debes reconstruir** el sitio estático (`npm run build:static`) y **volver a enviarlo** a la rama `gh-pages` (`npx gh-pages -d out -t true`) antes de que los cambios surtan efecto en GitHub Pages.
 
-**5. Access Your Site:**
+**5. Acceda a su sitio:**
 
-*   Wait a few minutes for GitHub Pages to build and deploy your site after configuring the settings and pushing the latest build.
-*   The URL will be shown in the GitHub Pages settings section.
-    *   User/Org site: `https://your-username.github.io/`
-    *   Project site: `https://your-username.github.io/your-repo-name/`
+*   Espere unos minutos para que GitHub Pages cree e implemente su sitio después de configurar los ajustes y enviar la última compilación.
+*   La URL se mostrará en la sección de configuración de páginas de GitHub.
+    *   Sitio del usuario/organización: `https://your-username.github.io/`
+    *   Sitio del proyecto: `https://your-username.github.io/your-repo-name/`
 
-**Troubleshooting 404 Errors:**
+**Solución de problemas de errores 404 o visualización del README:**
 
-If you still see a 404 error:
-*   **Verify `basePath`:** Did you uncomment and correctly set the `basePath` in `next.config.ts` if it's a project repository? Did you rebuild (`npm run build:static`) and redeploy (`npx gh-pages -d out -t true`) *after* changing it?
-*   **Check GitHub Pages Settings:** Go back to your repository's Settings > Pages. Is the source set to "Deploy from a branch", is the `gh-pages` branch selected, and is the folder `/ (root)`?
-*   **Check Deployed Files:** Navigate to the `gh-pages` branch in your repository on GitHub. Does it contain the contents of your local `out` folder, including `index.html` at the root of the branch?
-*   **Check `.nojekyll`:** Does the `.nojekyll` file exist in the root of the `gh-pages` branch? The `gh-pages -t true` command should add this.
-*   **Wait:** Sometimes it takes a few minutes for GitHub Pages updates to propagate.
-*   **Case Sensitivity:** Ensure filenames in your links match the case of the actual files on GitHub Pages (though this is less common with Next.js builds).
+Si sigues viendo un error 404 o el contenido del README:
+*   **Verificar `basePath`:** ¿Descomentaste y configuraste **correctamente** la `basePath` en `next.config.ts` si se trata de un repositorio de proyecto? ¿Reconstruiste (`npm run build:static`) y reimplementaste (`npx gh-pages -d out -t true`) **después** de cambiarlo? Este es el error más común.
+*   **Revisa la configuración de páginas de GitHub:** Regresa a Configuración > Páginas de tu repositorio. ¿Está la fuente configurada como "Deploy from a branch", la rama `gh-pages` está seleccionada y la carpeta está activada `/ (root)`?
+*   **Revisar archivos implementados:** Dirígete a la rama `gh-pages` en tu repositorio de GitHub. ¿Contiene el contenido de tu carpeta `out` local, incluyendo `index.html` en la raíz de la rama?
+*   **Verificar `.nojekyll`:** ¿Existe el archivo `.nojekyll` en la raíz de la rama `gh-pages`? El comando `gh-pages -t true` debería agregarlo.
+*   **Esperar:** A veces las actualizaciones de las páginas de GitHub tardan algunos minutos en propagarse. Refresca la página después de unos minutos.
+*   **Sensibilidad a mayúsculas y minúsculas:** Asegúrate de que los nombres de archivos en tus enlaces coincidan con las mayúsculas y minúsculas de los archivos reales en las páginas de GitHub (aunque esto es menos común con las compilaciones de Next.js).

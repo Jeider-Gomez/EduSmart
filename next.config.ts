@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   // *** IMPORTANT FOR GITHUB PAGES PROJECT SITES ***
   // If deploying to a URL like https://your-username.github.io/your-repo-name/
   // Uncomment the line below and replace 'your-repo-name' with your actual GitHub repository name.
-  // Failing to do this will likely result in a 404 error or missing styles/images.
-  // basePath: '/your-repo-name',
+  // Failing to do this will likely result in a 404 error or the README being displayed instead of the site.
+  basePath: '/your-repo-name', // REPLACE 'your-repo-name' with your repo name!
   images: {
     unoptimized: true, // Required for static export with next/image on GitHub Pages
     remotePatterns: [
