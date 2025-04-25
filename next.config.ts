@@ -2,8 +2,10 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export', // Essential for static export to GitHub Pages
-  // Uncomment and set the basePath if deploying to a subdirectory (like https://username.github.io/repo-name/)
-  // Replace 'your-repo-name' with your actual GitHub repository name.
+  // *** IMPORTANT FOR GITHUB PAGES PROJECT SITES ***
+  // If deploying to a URL like https://your-username.github.io/your-repo-name/
+  // Uncomment the line below and replace 'your-repo-name' with your actual GitHub repository name.
+  // Failing to do this will likely result in a 404 error or missing styles/images.
   // basePath: '/your-repo-name',
   images: {
     unoptimized: true, // Required for static export with next/image on GitHub Pages
@@ -49,4 +51,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-```

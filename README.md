@@ -60,7 +60,7 @@ You need to push the contents of the `out` directory (not the entire project sou
 
 **3. Configure GitHub Pages Settings:**
 
-**This is a crucial step!** If you see your README file instead of your website, it's likely because GitHub Pages is not configured correctly.
+**This is a crucial step!** If you see your README file or a 404 error instead of your website, it's likely because GitHub Pages is not configured correctly.
 
 *   Go to your repository on GitHub.
 *   Click on the "Settings" tab.
@@ -74,7 +74,7 @@ You need to push the contents of the `out` directory (not the entire project sou
 **4. Configure `basePath` (If Deploying to a Project Repository):**
 
 *   GitHub Pages deploys project sites to a subdirectory (e.g., `https://your-username.github.io/your-repo-name/`). User/Organization sites deploy to the root (`https://your-username.github.io/`).
-*   **If your site URL includes your repository name (a project site)**, you MUST configure the `basePath` in your Next.js config to match the repository name.
+*   **If your site URL includes your repository name (a project site)**, you MUST configure the `basePath` in your Next.js config to match the repository name. **Skipping this step for project sites is the most common cause of 404 errors or broken styling/images.**
     *   Open `next.config.ts`.
     *   Add or uncomment the `basePath` property:
         ```ts
@@ -106,14 +106,17 @@ You need to push the contents of the `out` directory (not the entire project sou
 
 **5. Access Your Site:**
 
-*   Wait a few minutes for GitHub Pages to build and deploy your site after configuring the settings.
+*   Wait a few minutes for GitHub Pages to build and deploy your site after configuring the settings and pushing the latest build.
 *   The URL will be shown in the GitHub Pages settings section.
     *   User/Org site: `https://your-username.github.io/`
     *   Project site: `https://your-username.github.io/your-repo-name/`
 
-If you still encounter issues, double-check:
-*   You pushed the contents of the `out` folder, not the source code, to the deployment branch (`gh-pages`).
-*   Your GitHub Pages settings point to the correct branch (`gh-pages`) and folder (`/ (root)`).
-*   You configured `basePath` in `next.config.ts`, rebuilt, and redeployed if it's a project site.
-*   The `.nojekyll` file exists in the root of the `gh-pages` branch.
-```
+**Troubleshooting 404 Errors:**
+
+If you still see a 404 error:
+*   **Verify `basePath`:** Did you uncomment and correctly set the `basePath` in `next.config.ts` if it's a project repository? Did you rebuild (`npm run build:static`) and redeploy (`npx gh-pages -d out -t true`) *after* changing it?
+*   **Check GitHub Pages Settings:** Go back to your repository's Settings > Pages. Is the source set to "Deploy from a branch", is the `gh-pages` branch selected, and is the folder `/ (root)`?
+*   **Check Deployed Files:** Navigate to the `gh-pages` branch in your repository on GitHub. Does it contain the contents of your local `out` folder, including `index.html` at the root of the branch?
+*   **Check `.nojekyll`:** Does the `.nojekyll` file exist in the root of the `gh-pages` branch? The `gh-pages -t true` command should add this.
+*   **Wait:** Sometimes it takes a few minutes for GitHub Pages updates to propagate.
+*   **Case Sensitivity:** Ensure filenames in your links match the case of the actual files on GitHub Pages (though this is less common with Next.js builds).
