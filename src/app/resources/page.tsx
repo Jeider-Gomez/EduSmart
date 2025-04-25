@@ -95,7 +95,7 @@ export default function ResourcesPage() {
                      {/* Example for image preview: */}
                      {resource.type === 'image' && (
                          <div className="mt-2">
-                             <Image src={resource.url} alt={resource.title} width={200} height={100} className="rounded border mx-auto"/>
+                             <Image src={resource.url} alt={resource.title} width={200} height={100} className="rounded border mx-auto" unoptimized/>
                          </div>
                      )}
                       {/* Example for video embed preview: */}

@@ -20,6 +20,7 @@ export default function Footer() {
                  width={100} // Reduced size slightly
                  height={26} // Adjust height proportionally
                  className="h-6 w-auto" // Control height
+                 unoptimized // Add unoptimized prop
                />
            </Link>
 

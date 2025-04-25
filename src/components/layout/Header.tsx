@@ -32,7 +32,8 @@ export default function Header() {
              width={150}
              height={40}
              className="h-10 w-auto"
-             priority
+             unoptimized // Add unoptimized prop
+             // priority // Remove priority as it's for optimized images
            />
           <span className="font-poppins text-xl font-bold text-primary hidden sm:inline ml-2">
             EduSmart {/* Updated Name */}
@@ -81,6 +82,7 @@ export default function Header() {
                                 width={100}
                                 height={26}
                                 className="h-7 w-auto"
+                                unoptimized // Add unoptimized prop
                             />
                            <span className="font-poppins text-lg font-semibold text-primary ml-1">EduSmart</span> {/* Updated Name */}
                          </Link>
