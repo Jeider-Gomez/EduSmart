@@ -29,60 +29,91 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
 ## Deploying to GitHub Pages
 
-This project is configured for static export, making it suitable for deployment on GitHub Pages.
+This project is configured for static export, making it suitable for deployment on GitHub Pages. Follow these steps carefully:
 
-1.  **Build the static site:**
-    Run the following command in your project's root directory:
-    ```bash
-    npm run build:static
-    ```
-    This will generate the static files in the `out` directory.
+**1. Build the Static Site:**
 
-2.  **Push the `out` directory to GitHub:**
-    *   **Method 1: Deploy `out` folder directly**
-        *   Initialize a Git repository in the `out` folder (if not already done).
-        *   Create a new repository on GitHub (e.g., `your-username.github.io` for a user/org page, or any name like `my-edusmart-app` for a project page).
-        *   Add the GitHub repository as a remote: `git remote add origin https://github.com/your-username/your-repo-name.git`
-        *   Commit and push the contents of the `out` folder to the `main` (or `master`) branch:
-            ```bash
-            cd out
-            git init # If not already a repo
-            # Add .nojekyll file if not copied by build process
-            touch .nojekyll
-            git add .
-            git commit -m "Deploy static site"
-            git branch -M main # Or master
-            git remote add origin https://github.com/your-username/your-repo-name.git # Add remote if needed
-            git push -u origin main --force # Use --force if overwriting history
-            ```
-    *   **Method 2: Use `gh-pages` branch**
-        *   Commit your main project code changes.
-        *   Push the `out` folder's contents to a `gh-pages` branch in your main project repository:
-            ```bash
-            # Install gh-pages if you haven't: npm install gh-pages --save-dev
-            # Make sure .nojekyll is in the 'out' directory (or public)
-            # Run from the project root:
-            npx gh-pages -d out -t true # -t adds the .nojekyll file automatically
-            ```
+Run the following command in your project's root directory:
+```bash
+npm run build:static
+```
+This command first builds the Next.js application (`npm run build`) and then exports it to static HTML/CSS/JS files (`npm run export`). The static files will be generated in the `out` directory.
 
-3.  **Configure GitHub Pages:**
-    *   Go to your repository settings on GitHub (`https://github.com/your-username/your-repo-name/settings/pages`).
-    *   Under "Build and deployment", select "Deploy from a branch" as the source.
-    *   Choose the branch you pushed the static files to (`main`/`master` or `gh-pages`).
-    *   Select the `/ (root)` folder.
-    *   Click "Save".
+**2. Push the Static Files to GitHub:**
 
-4.  **Access your site:**
-    *   If you deployed to `your-username.github.io`, the site will be at `https://your-username.github.io/`.
-    *   If you deployed to a project repository (e.g., `my-edusmart-app`), the site will be at `https://your-username.github.io/my-edusmart-app/`.
-        *   **Important:** If deploying to a subdirectory (project repository), you might need to configure `basePath` in `next.config.mjs`. Uncomment and set `basePath: '/your-repo-name'` in `next.config.mjs` and rebuild before deploying.
+You need to push the contents of the `out` directory (not the entire project source code) to a specific branch that GitHub Pages will serve. The recommended method is using the `gh-pages` branch:
 
-It might take a few minutes for GitHub Pages to build and deploy your site.
+*   **Method: Use `gh-pages` branch (Recommended)**
+    *   Make sure your main project code changes are committed to your `main` (or `master`) branch first.
+    *   Install the `gh-pages` helper package if you haven't already:
+        ```bash
+        npm install gh-pages --save-dev
+        ```
+    *   Run the following command **from your project's root directory** (the one containing `package.json`):
+        ```bash
+        npx gh-pages -d out -t true
+        ```
+        *   `-d out`: Specifies that the `out` directory contains the files to deploy.
+        *   `-t true`: Adds a `.nojekyll` file automatically to the deployment branch, which is important for GitHub Pages to serve the site correctly without Jekyll interference.
+
+**3. Configure GitHub Pages Settings:**
+
+**This is a crucial step!** If you see your README file instead of your website, it's likely because GitHub Pages is not configured correctly.
+
+*   Go to your repository on GitHub.
+*   Click on the "Settings" tab.
+*   In the left sidebar, navigate to "Pages".
+*   Under "Build and deployment":
+    *   Set the **Source** to **"Deploy from a branch"**.
+    *   Under **Branch**, select the `gh-pages` branch (or `main`/`master` if you used Method 1 in step 2, although `gh-pages` is preferred for project sites).
+    *   Ensure the folder is set to `/ (root)`.
+    *   Click **"Save"**.
+
+**4. Configure `basePath` (If Deploying to a Project Repository):**
+
+*   GitHub Pages deploys project sites to a subdirectory (e.g., `https://your-username.github.io/your-repo-name/`). User/Organization sites deploy to the root (`https://your-username.github.io/`).
+*   **If your site URL includes your repository name (a project site)**, you MUST configure the `basePath` in your Next.js config to match the repository name.
+    *   Open `next.config.ts`.
+    *   Add or uncomment the `basePath` property:
+        ```ts
+        import type {NextConfig} from 'next';
+
+        const nextConfig: NextConfig = {
+          output: 'export', // Keep this for static export
+          // *** Add or uncomment the line below, replacing 'your-repo-name' ***
+          // basePath: '/your-repo-name',
+          images: {
+             unoptimized: true, // Required for static export with next/image
+             remotePatterns: [
+                 // ... your existing remote patterns ...
+             ],
+          },
+          // ... other configurations ...
+          typescript: {
+            ignoreBuildErrors: true,
+          },
+          eslint: {
+            ignoreDuringBuilds: true,
+          },
+        };
+
+        export default nextConfig;
+        ```
+    *   Replace `/your-repo-name` with the actual name of your GitHub repository (e.g., `/EduSmart`).
+    *   **Important:** After modifying `next.config.ts`, you **must rebuild** the static site (`npm run build:static`) and **re-push** it to the `gh-pages` branch (`npx gh-pages -d out -t true`) before the changes take effect on GitHub Pages.
+
+**5. Access Your Site:**
+
+*   Wait a few minutes for GitHub Pages to build and deploy your site after configuring the settings.
+*   The URL will be shown in the GitHub Pages settings section.
+    *   User/Org site: `https://your-username.github.io/`
+    *   Project site: `https://your-username.github.io/your-repo-name/`
+
+If you still encounter issues, double-check:
+*   You pushed the contents of the `out` folder, not the source code, to the deployment branch (`gh-pages`).
+*   Your GitHub Pages settings point to the correct branch (`gh-pages`) and folder (`/ (root)`).
+*   You configured `basePath` in `next.config.ts`, rebuilt, and redeployed if it's a project site.
+*   The `.nojekyll` file exists in the root of the `gh-pages` branch.
+```

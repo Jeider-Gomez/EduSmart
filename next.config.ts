@@ -1,14 +1,12 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  output: 'export', // Essential for static export to GitHub Pages
+  // Uncomment and set the basePath if deploying to a subdirectory (like https://username.github.io/repo-name/)
+  // Replace 'your-repo-name' with your actual GitHub repository name.
+  // basePath: '/your-repo-name',
   images: {
+    unoptimized: true, // Required for static export with next/image on GitHub Pages
     remotePatterns: [
       {
         protocol: 'https',
@@ -42,6 +40,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  typescript: {
+    ignoreBuildErrors: true, // Keep if needed, but try to resolve TS errors
+  },
+  eslint: {
+    ignoreDuringBuilds: true, // Keep if needed, but try to resolve lint errors
+  },
 };
 
 export default nextConfig;
+```
